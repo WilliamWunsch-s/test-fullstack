@@ -1,4 +1,4 @@
-# 🧪 Dashboard de Cripto em Tempo Real
+# 🧪 Dashboard de Cripto em Tempo Real (dados simulados)
 
 ![Status](https://img.shields.io/badge/status-concluído-brightgreen)
 
@@ -7,17 +7,6 @@ Este projeto é uma aplicação fullstack simples construída para demonstrar a 
 > **Fluxo da Arquitetura:**
 >
 > **Worker (Node.js)** → **Redis** → **API (Python/Flask)** → **Frontend (React/Next.js)**
-
----
-
-## 📋 Tabela de Conteúdos
-
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Estrutura de Pastas](#-estrutura-de-pastas)
-- [Pré-requisitos e Instalação](#-pré-requisitos-e-instalação)
-- [Como Executar o Sistema](#-como-executar-o-sistema)
-- [Autor](#-autor)
 
 ---
 
@@ -36,29 +25,13 @@ O objetivo foi construir um sistema que simula um fluxo de dados em tempo real, 
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend:** [Next.js](https://nextjs.org/) (com React & TypeScript), [Tailwind CSS](https://tailwindcss.com/).
-- **API:** [Python](https://www.python.org/) com o micro-framework [Flask](https://flask.palletsprojects.com/).
+- **Frontend:** [Next.js](https://nextjs.org/) (com React & TypeScript).
+- **API:** [Python](https://www.python.org/) com o [Flask](https://flask.palletsprojects.com/).
 - **Worker:** [Node.js](https://nodejs.org/en).
 - **Cache/Broker:** [Redis](https://redis.io/).
 - **Gerenciador de Processos:** [PM2](https://pm2.keymetrics.io/).
 
 ---
-
-## 📁 Estrutura de Pastas
-
-O projeto está organizado em uma estrutura de monorepo, com cada serviço em sua própria pasta:
-
-```
-/
-├── api/          # Contém a API em Python/Flask
-├── frontend/     # Contém a aplicação Frontend em Next.js
-├── worker/       # Contém o script Worker em Node.js
-├── .gitignore    # Arquivo para ignorar arquivos e pastas no Git
-└── README.md     # Documentação do projeto
-```
-
----
-
 ## 🔧 Pré-requisitos e Instalação
 
 ### Pré-requisitos
@@ -77,7 +50,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 1.  **Clone o repositório:**
 
     ```bash
-    git clone [https://github.com/WilliamWunsch-s/test-fullstack.git](https://github.com/WilliamWunsch-s/test-fullstack.git)
+    git clone https://github.com/WilliamWunsch-s/test-fullstack.git
     cd test-fullstack
     ```
 
@@ -88,14 +61,14 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
     cd frontend && npm install && cd ..
 
     # Instalar dependências do Worker
-    cd worker && npm install && cd ..
+    cd worker && npm install &&  cd ..
 
-    # Instalar dependências da API (com ambiente virtual)
+    # Instalar dependências da API (recomendado com ambiente virtual)
     cd api
     python -m venv venv
     # Ative o ambiente virtual:
     # No macOS/Linux: source venv/bin/activate
-    # No Windows: .\\venv\\Scripts\\activate
+    # No Windows: .\venv\Scripts\activate
     pip install -r requirements.txt
     cd ..
     ```
@@ -108,7 +81,8 @@ Para rodar a aplicação completa, você precisará de **3 terminais** para os c
 
 > ❗ **Importante:** Antes de iniciar os componentes, **certifique-se de que o serviço do Redis esteja em execução** na sua máquina.
 >
-> - _Comando comum para iniciar o Redis localmente: `redis-server`_
+> - _Comando comum para iniciar o Redis localmente: `sudo service redis-server start`
+> - _Ou via docker: `docker run -p 6379:6379 redis:alpine`
 
 Com o Redis rodando, siga os passos abaixo:
 
@@ -118,7 +92,7 @@ Navegue até a pasta do worker e use o PM2 para iniciá-lo em segundo plano.
 
 ```bash
 cd worker
-pm2 start worker.js --name btc-worker
+pm2 start main.js --name btc-worker (se necessário `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` para liberar a execução de scripts apenas para o terminal atual)
 pm2 logs btc-worker # Comando opcional para acompanhar os logs
 ```
 
@@ -128,7 +102,7 @@ Navegue até a pasta da API, ative o ambiente virtual (se não estiver ativo) e 
 
 ```bash
 cd api
-# source venv/bin/activate ou .\\venv\\Scripts\\activate
+# source venv/bin/activate ou .\venv\Scripts\activate
 flask run
 ```
 
@@ -145,13 +119,6 @@ npm run dev
 
 A aplicação abrirá no seu navegador em `http://localhost:3000`.
 
-Pronto! Agora você deve ver o dashboard funcionando e atualizando a cada 5 segundos.
+Pronto! Agora você deve ver o dashboard funcionando localmente e atualizando a cada 5 segundos.
 
 ---
-
-## ✨ Autor
-
-**William Wunsch-s**.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/william-wunsch/)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/WilliamWunsch-s)
