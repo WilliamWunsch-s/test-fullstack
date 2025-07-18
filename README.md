@@ -33,8 +33,8 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITORIO>
-    cd nome-do-projeto
+    git clone https://github.com/WilliamWunsch-s/test-fullstack.git
+    cd test-fullstack
     ```
 
 2.  **Instale as dependências do Frontend:**
