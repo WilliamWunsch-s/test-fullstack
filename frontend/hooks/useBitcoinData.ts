@@ -29,7 +29,6 @@ export function useBitcoinData(): UseBitcoinDataReturn {
             }
             const newData: BTCData = await response.json();
 
-            // Lógica para salvar o preço anterior
             setCurrentData(prevData => {
                 if (prevData) {
                     setPreviousPrice(prevData.price);
