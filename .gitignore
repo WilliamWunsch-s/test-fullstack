@@ -1,0 +1,22 @@
+# Logs e dependências do Node.js (para frontend e worker)
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# Build do Next.js
+.next/
+out/
+
+# Dependências e cache do Python (para api)
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Arquivos de Sistema Operacional e Editores
+.DS_Store
+.vscode/
+Thumbs.db
